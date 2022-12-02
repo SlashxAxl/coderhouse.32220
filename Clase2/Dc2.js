@@ -2,15 +2,15 @@ class productManager{
     constructor(){
         this.products = [];
     }
-    addProduct(title,description,price, thumbnail){
+    addProduct(title,description,price, thumbnail,code,stock){
         const product = {
-                id: this.#getMaxId().length + 1,
+                id: this.#getMaxId() + 1,
                 title,
                 description,
                 price,
                 thumbnail,
-                code: this.#getMaxCode().length + 1,
-                stock: [],
+                code,
+                stock,
             };
         this.products.push(product);
         console.log(this.products);
@@ -22,16 +22,16 @@ class productManager{
         })
         return maxId
     }
-    #getMaxCode(){
+    /*#getMaxCode(){
         let maxCode = 0;
         this.products.map((product)=>{
             if (product.code>maxCode)maxCode = product.code 
         })
         return maxCode
-    }
+    }*/
     #getProductById(idProduct){
         if ( idProduct != null) {
-            this.products.find((product) => product.id == idProduct)
+            this.products.find((product) => product.id === idProduct)
         } else {
             console.log("Product not found")
         }
@@ -39,6 +39,6 @@ class productManager{
 }
 
 const productmanager = new productManager();
-productmanager.addProduct("Poduct1","Description1","Price1","Thumbnail1");
-productmanager.addProduct("Poduct2","Description2","Price2","Thumbnail2");
-productmanager.addProduct("Poduct3","Description3","Price3","Thumbnail3");
+productmanager.addProduct("Poduct1","Description1","Price1","Thumbnail1","code1","stock1");
+productmanager.addProduct("Poduct2","Description2","Price2","Thumbnail2","code1","stock1");
+productmanager.addProduct("Poduct3","Description3","Price3","Thumbnail3","code1","stock1");
